@@ -72,19 +72,19 @@ if __name__ == '__main__':
     device = torch.device('cuda' if cuda else 'cpu')
     if cvd_type == CVDType.DEUTAN.value:
         if cuda:
-            model.load_state_dict(torch.load("../models/DEUTAN/generator_90_epochs.pth"))
+            model.load_state_dict(torch.load("../../models/DEUTAN/generator_90_epochs.pth"))
         else:
-            model.load_state_dict(torch.load("../models/DEUTAN/generator_90_epochs.pth", map_location=device))
+            model.load_state_dict(torch.load("../../models/DEUTAN/generator_90_epochs.pth", map_location=device))
     elif cvd_type == CVDType.PROTAN.value:
         if cuda:
-            model.load_state_dict(torch.load("../models/PROTAN/PROTAN. 100% SEVERITY. generator_10.pth"))
+            model.load_state_dict(torch.load("../../models/PROTAN/PROTAN. 100% SEVERITY. generator_10.pth"))
         else:
-            model.load_state_dict(torch.load("../models/DEUTAN/PROTAN. 100% SEVERITY. generator_10.pth", map_location=device))
+            model.load_state_dict(torch.load("../../models/DEUTAN/PROTAN. 100% SEVERITY. generator_10.pth", map_location=device))
     elif cvd_type == CVDType.TRITAN.value:
         if cuda:
-            model.load_state_dict(torch.load("../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth"))
+            model.load_state_dict(torch.load("../../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth"))
         else:
-            model.load_state_dict(torch.load("../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth", map_location=device))
+            model.load_state_dict(torch.load("../../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth", map_location=device))
     model.eval()
 
     # Evaluation
