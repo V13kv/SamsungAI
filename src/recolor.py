@@ -69,25 +69,26 @@ if __name__ == '__main__':
 
     # Model load
     model = SWIN_Generator()
+    device = torch.device('cuda' if cuda else 'cpu')
     if cvd_type == CVDType.DEUTAN.value:
         if cuda:
             model.load_state_dict(torch.load("../models/DEUTAN/generator_90_epochs.pth"))
         else:
-            model.load_state_dict(torch.load("../models/DEUTAN/generator_90_epochs.pth", map_location=torch.device('cpu')))
+            model.load_state_dict(torch.load("../models/DEUTAN/generator_90_epochs.pth", map_location=device))
     elif cvd_type == CVDType.PROTAN.value:
         if cuda:
             model.load_state_dict(torch.load("../models/PROTAN/PROTAN. 100% SEVERITY. generator_10.pth"))
         else:
-            model.load_state_dict(torch.load("../models/DEUTAN/PROTAN. 100% SEVERITY. generator_10.pth", map_location=torch.device('cpu')))
+            model.load_state_dict(torch.load("../models/DEUTAN/PROTAN. 100% SEVERITY. generator_10.pth", map_location=device))
     elif cvd_type == CVDType.TRITAN.value:
         if cuda:
             model.load_state_dict(torch.load("../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth"))
         else:
-            model.load_state_dict(torch.load("../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth", map_location=torch.device('cpu')))
+            model.load_state_dict(torch.load("../models/TRITAN/TRITAN. 100% SEVERITY. generator_10.pth", map_location=device))
     model.eval()
 
     # Evaluation
-    unorm = UnNormalize(mean=(0.5, 0.5, 0.5))
+    unorm = UnNormalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
     with torch.no_grad():
         output = model(img.unsqueeze(0))
     output = unorm(output)
